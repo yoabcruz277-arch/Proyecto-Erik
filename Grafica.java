@@ -1,3 +1,4 @@
+import Proyecto.ListaDoblementeLigada;
 /**
  * Interfaz que define el comportamiento para el TDA Gráfica.
  * Estructura los métodos necesarios para la manipulación de vértices, aristas 

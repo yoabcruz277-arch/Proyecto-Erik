@@ -1,3 +1,5 @@
+import Proyecto.ListaDoblementeLigada; 
+import miCola.Cola;                    
 import java.util.Iterator;
 
 /**
