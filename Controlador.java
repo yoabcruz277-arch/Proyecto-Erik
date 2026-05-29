@@ -38,18 +38,21 @@ public class Controlador {
                     vista.imprimir(modelo.estacionLinea(lineaBuscada));
                     break;
                 case 3:
+                    if (!verificarAdmin(vista)) break;
                     String nombreAgr=vista.texto("Escribe el nombre de la estación que quieres agregar: ");
                     String lineaAgr=vista.texto("Escribe el nombre de la línea de la estación: ");
                     vista.imprimir(modelo.agregarEstacion(nombreAgr, lineaAgr));
                     break;
 
                 case 4:
+                    if (!verificarAdmin(vista)) break;
                     String nombreElim=vista.texto("Escribe el nombre de la estación que quieres eliminar: ");
                     String lineaElim=vista.texto("Escribe el nombre de la línea de la estación: ");
                     vista.imprimir(modelo.eliminarEstacion(nombreElim, lineaElim));
                     break;
 
                 case 5:
+                    if (!verificarAdmin(vista)) break;
                     String eso=vista.texto("Escribe el nombre de la estación de origen: ");
                     String tilin=vista.texto("Escribe el nombre de la línea de la estación de origen: ");
                     String sixse=vista.texto("Escribe el nombre de la estación de destino: ");
@@ -63,6 +66,7 @@ public class Controlador {
                     break;  
 
                 case 6:
+                    if (!verificarAdmin(vista)) break;
                     String niñoDel=vista.texto("Escribe el nombre de la estación de origen: ");
                     String oxxo=vista.texto("Escribe el nombre de la línea de la estación de origen: ");
                     String ete=vista.texto("Escribe el nombre de la estación de destino: ");
@@ -95,6 +99,7 @@ public class Controlador {
                     break;
                 
                 case 11:
+                    if (!verificarAdmin(vista)) break;
                     String nomComp=vista.texto("Nombre de la estación que quieres simular su eliminación: ");
                     String linComp=vista.texto("Línea de la estación: ");
                     vista.imprimir(modelo.obtenerComponentesConexas(nomComp, linComp));
@@ -114,5 +119,20 @@ public class Controlador {
 
         }while(opcion!=13);
         vista.apagarAuto();
+    }
+    /**
+     * Solicita la contraseña al usuario para operaciones de administrador.
+     * @param vista El objeto vista para interactuar con el usuario.
+     * @return true si la contraseña es correcta, false si es incorrecta.
+     */
+    private static boolean verificarAdmin(Vista vista) {
+        String pass = vista.texto("SUDO MODE: ingresa la palabra magica.");
+        if (pass.equals("sixeventungtung123")) { 
+            vista.imprimir("SUDO MODE: ACTIVADO");
+            return true;
+        }else {
+            vista.imprimir("SUDO MODE: DENEGADO");
+            return false;
+        }
     }
 }
